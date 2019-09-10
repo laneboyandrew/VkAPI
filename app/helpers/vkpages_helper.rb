@@ -1,0 +1,2 @@
+module VkpagesHelper
+end

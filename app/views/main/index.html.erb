@@ -1,0 +1,20 @@
+<% @newsfeed.each do |item| %>
+  <tr>
+    <td>
+      <%= link_to vk_url(item.source), target: '_blank' do %>
+        <%= image_tag avatar_for(item.source) %>
+      <% end %>
+    </td>
+    
+    <td class="wide">
+      <div class="pull-right"><%= formatted_time_for(item.date) %></div>
+      <%= link_to name_for(item.source), vk_url(item.source), target: '_blank' %>
+      
+      <p><%=raw render_links(item.text) %></p>
+      
+      <% item.attachments.each do |attachment| %>
+        <%= render 'attachment', attachment: attachment %>
+      <% end if item.attachments? %>
+    </td>
+  </tr>
+<% end %>
